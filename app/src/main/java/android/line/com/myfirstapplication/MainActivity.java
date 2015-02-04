@@ -1,9 +1,13 @@
 package android.line.com.myfirstapplication;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -11,9 +15,33 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
 
+        /* The progress of loading UI element to screen */
+
+        /*
+        Load UI element from res folder to screen
+        setContentView(R.layout.activity_main);
+        Create a whole new View object
+        Load your view object to screen
+        */
+
+        /*
+        Load UI element from dynamic code
+        */
+        View contentView;
+        TextView textView;
+        textView = new TextView(this);
+        textView.setTextColor(Color.RED);
+        textView.setTextSize(45);
+        textView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+        /*Create a CharSequence*/
+        final CharSequence charSequence = CharSequence.class.cast("Hello world!");
+        textView.setText(charSequence);
+        contentView = textView;
+
+        /* Set the textView you created to screen */
+        setContentView(contentView);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
